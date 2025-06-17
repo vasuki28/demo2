@@ -9,7 +9,8 @@ pipeline {
     stages {
        stage('Create Directory') {
             steps {
-                sudo 'mkdir -p mydir'
+        
+                sudo mkdir -p /home/vasuki
             }
         }
 
