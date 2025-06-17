@@ -14,17 +14,6 @@ pipeline {
             }
         }
 
-        stage('Create File') {
-            steps {
-                sudo 'echo "Hello from Jenkins!" > mydir/file.txt'
-            }
-        }
-
-        stage('Copy Directory') {
-            steps {
-                sudo 'mkdir -p backup && cp -r mydir backup/'
-            }
-        }
 
             // post {
             //     // If Maven was able to run the tests, even if some of the test
