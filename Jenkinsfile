@@ -1,5 +1,5 @@
 pipeline {
-    agent {label 'ubuntu'}
+    agent {label "ubuntu"}
 
     tools {
         // Install the Maven version configured as "M3" and add it to the path.
@@ -7,12 +7,17 @@ pipeline {
     }
 
     stages {
-       stage('Create Directory') {
+        stage('Build') {
             steps {
-        
-                sudo mkdir -p /home/vasuki
+                // Get some code from a GitHub repository
+                git 'https://github.com/jglick/simple-maven-project-with-tests.git'
+
+                // Run Maven on a Unix agent.
+                sh "mvn -Dmaven.test.failure.ignore=true clean package"
+
+                // To run Maven on a Windows agent, use
+                // bat "mvn -Dmaven.test.failure.ignore=true clean package"
             }
-        }
 
 
             // post {
